@@ -50,11 +50,11 @@ public class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour {
 							"is needed in scene, so '" + singleton +
 							"' was created with DontDestroyOnLoad.");
 					}
-					else {
-						Debug.Log ("[Singleton] Using instance already created: " +
-							_instance.gameObject.name + "::" +
-							typeof(T).ToString());
-					}
+					//else {
+						//Debug.Log ("[Singleton] Using instance already created: " +
+						//	_instance.gameObject.name + "::" +
+						//	typeof(T).ToString());
+					//}
 				}
 				return _instance;
 			}

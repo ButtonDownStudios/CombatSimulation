@@ -65,6 +65,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1457265901407338
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4515072911042948}
+  - component: {fileID: 119004085183246228}
+  m_Layer: 0
+  m_Name: HitRange
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
 --- !u!1 &1493363191612032
 GameObject:
   m_ObjectHideFlags: 0
@@ -89,7 +105,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4768496860128384}
   - component: {fileID: 195165916579413004}
-  - component: {fileID: 114969373007021566}
   - component: {fileID: 95625282448322066}
   - component: {fileID: 114712456826667136}
   m_Layer: 0
@@ -132,6 +147,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1951274821702826
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4087088542720714}
+  - component: {fileID: 119681197543639068}
+  m_Layer: 0
+  m_Name: AgroRange
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
 --- !u!4 &4013537013665658
 Transform:
   m_ObjectHideFlags: 1
@@ -139,13 +170,39 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1493363191612032}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.75, y: 1.7, z: 0}
+  m_LocalPosition: {x: -0.75, y: 1.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4566971874532820}
   m_Father: {fileID: 4768496860128384}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4087088542720714
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1951274821702826}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4768496860128384}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!4 &4515072911042948
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1457265901407338}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalScale: {x: 1.0000002, y: 1.0000006, z: 1.0000008}
+  m_Children: []
+  m_Father: {fileID: 4768496860128384}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!4 &4524302952657914
 Transform:
   m_ObjectHideFlags: 1
@@ -178,17 +235,19 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1602739697400122}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0.34401864, z: -0, w: 0.9389629}
+  m_LocalPosition: {x: 46.9, y: 0, z: -41.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4524302952657914}
   - {fileID: 4795668994035694}
   - {fileID: 4013537013665658}
   - {fileID: 4782643457166936}
+  - {fileID: 4087088542720714}
+  - {fileID: 4515072911042948}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -40.244003, z: 0}
 --- !u!4 &4771433977675014
 Transform:
   m_ObjectHideFlags: 1
@@ -209,7 +268,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1891152377251916}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.75, y: 1.7, z: 0}
+  m_LocalPosition: {x: 0.75, y: 1.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4771433977675014}
@@ -449,22 +508,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c092cc017edb7c479ee3da2761b7366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  team: 0
-  AgroRange: 3
-  hitRange: 1
---- !u!114 &114969373007021566
-MonoBehaviour:
+  team: 1
+  agroRange: 12
+  hitRange: 2
+  finish: {fileID: 0}
+  agroRangeProjector: {fileID: 119681197543639068}
+  hitRangeProjector: {fileID: 119004085183246228}
+  enemy: {fileID: 0}
+  isFighting: 0
+  isAlive: 1
+--- !u!119 &119004085183246228
+Projector:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1602739697400122}
+  m_GameObject: {fileID: 1457265901407338}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3b2c40db7fa2024681362fe2811111a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  isWalking: 1
+  serializedVersion: 2
+  m_NearClipPlane: 0.1
+  m_FarClipPlane: 5
+  m_FieldOfView: 60
+  m_AspectRatio: 1
+  m_Orthographic: 1
+  m_OrthographicSize: 2
+  m_Material: {fileID: 2100000, guid: 9a1cd6b0bc1a1594b941e4eb036c816c, type: 2}
+  m_IgnoreLayers:
+    serializedVersion: 2
+    m_Bits: 4294967039
+--- !u!119 &119681197543639068
+Projector:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1951274821702826}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_NearClipPlane: 0.1
+  m_FarClipPlane: 5
+  m_FieldOfView: 60
+  m_AspectRatio: 1
+  m_Orthographic: 1
+  m_OrthographicSize: 12
+  m_Material: {fileID: 2100000, guid: 9a1cd6b0bc1a1594b941e4eb036c816c, type: 2}
+  m_IgnoreLayers:
+    serializedVersion: 2
+    m_Bits: 4294967039
 --- !u!135 &135960914581661228
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -485,14 +573,14 @@ NavMeshAgent:
   m_GameObject: {fileID: 1602739697400122}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 1
-  m_Speed: 3.5
+  m_Radius: 0.3
+  m_Speed: 5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
+  m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 3
   m_BaseOffset: 0
