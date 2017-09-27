@@ -6,7 +6,7 @@ public class AttackingBehaviour : StateMachineBehaviour {
 	UnitController unitController;
 
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-		Debug.Log (animator.gameObject.name+" started attacking.");
+		//Debug.Log (animator.gameObject.name+" started attacking.");
 		unitController = animator.GetComponent<UnitController> ();
 		//unitController.SetMovementTarget (unitController.enemy.transform);
 		unitController.StopMovement();

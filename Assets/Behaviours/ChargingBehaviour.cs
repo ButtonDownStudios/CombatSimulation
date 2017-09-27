@@ -6,7 +6,7 @@ public class ChargingBehaviour : StateMachineBehaviour {
 	UnitController unitController;
 
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-		Debug.Log (animator.gameObject.name+" started charging.");
+		//Debug.Log (animator.gameObject.name+" started charging.");
 		unitController = animator.GetComponent<UnitController> ();
 		unitController.SetMovementTarget (unitController.enemy.transform);
 	}

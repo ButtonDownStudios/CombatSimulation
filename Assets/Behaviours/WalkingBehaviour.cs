@@ -4,7 +4,7 @@ public class WalkingBehaviour : StateMachineBehaviour {
 	UnitController unitController;
 
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-		Debug.Log (animator.gameObject.name+" started walking.");
+		//Debug.Log (animator.gameObject.name+" started walking.");
 		unitController = animator.GetComponent<UnitController> ();
 		unitController.SetMovementTarget (unitController.finish);
 	}

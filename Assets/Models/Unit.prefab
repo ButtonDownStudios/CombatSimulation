@@ -126,6 +126,7 @@ GameObject:
   - component: {fileID: 195165916579413004}
   - component: {fileID: 95625282448322066}
   - component: {fileID: 114712456826667136}
+  - component: {fileID: 114639241837919262}
   m_Layer: 0
   m_Name: Unit
   m_TagString: Untagged
@@ -658,6 +659,22 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114639241837919262
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1602739697400122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a50c38ed1d3300e429d010dbd54ef405, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bodyPartsTransform: {fileID: 0}
+  head: {fileID: 1440743753665044}
+  body: {fileID: 1028894757860378}
+  leftArm: {fileID: 1331625033281280}
+  rightArm: {fileID: 1686484681249134}
 --- !u!114 &114656968268475330
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -716,6 +733,8 @@ MonoBehaviour:
   agroRange: 12
   hitRange: 2
   maxHP: 3
+  damage: 1
+  movingSpeed: 5
   finish: {fileID: 0}
   agroRangeProjector: {fileID: 119681197543639068}
   hitRangeProjector: {fileID: 119004085183246228}

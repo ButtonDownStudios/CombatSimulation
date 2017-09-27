@@ -16,6 +16,8 @@ public class HPBarController : MonoBehaviour {
 	public int currentHP{
 		get {return _currentHP;}
 		set {
+			if (value < 0)
+				return;
 			if(value != _currentHP){
 				_currentHP = value;
 				for (int i = 0; i < maxHP; i++)
@@ -31,5 +33,9 @@ public class HPBarController : MonoBehaviour {
 			newHP.name = "HP";
 		}
 		currentHP = maxHP;
+	}
+
+	public void Death(){
+		Destroy (transform.parent.gameObject);
 	}
 }
