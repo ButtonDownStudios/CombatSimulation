@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using UnityEngine.AI;
 
 public enum Team {Red, Blue, Yellow, Black};
@@ -7,34 +8,56 @@ public enum Team {Red, Blue, Yellow, Black};
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(BodyController))]
 public class UnitController : MonoBehaviour {
-	public Team team;
-	public float agroRange = 12f;
-	public float hitRange = 2f;
-	public int maxHP = 3;
-	public int damage = 1;
-	public float movingSpeed = 5;
+
+	public UnitCharacteristics unitCharacteristics;
 	public Transform finish;
 	public Projector agroRangeProjector;
 	public Projector hitRangeProjector;
 	public UnitController enemy;
 	public HPBarController hpBarController;
+	public GameObject flag;
+	public Transform spawner;
 
 	public bool isFighting = false;
 	public bool isAlive = true;
+	public bool isCarryingFlag = false;
+
+	public event Action<UnitController> OnDeath;
+
 
 	Animator animator;
 	NavMeshAgent navMeshAgent;
 	BodyController bodyController;
+
+	[HideInInspector]
+	public Team team;
+	float agroRange;
+	float hitRange;
+	int maxHP;
+	int damage;
+	float movingSpeed;
 
 	void Start () {
 		bodyController = GetComponent<BodyController> ();
 		CombatController.Instance.AddUnitToTeam (this);
 		animator = GetComponent<Animator> ();
 		navMeshAgent = GetComponent<NavMeshAgent> ();
+		OnDeath += bodyController.Death;
+		OnDeath += hpBarController.Death;
+		OnDeath += Death;
+		InitUnit ();
+	}
+
+	public void InitUnit(){
+		team = unitCharacteristics.team;
+		agroRange = unitCharacteristics.agroRange;
+		hitRange = unitCharacteristics.hitRange;
+		maxHP = unitCharacteristics.maxHP;
+		damage = unitCharacteristics.damage;
+		movingSpeed = unitCharacteristics.movingSpeed;
 		agroRangeProjector.orthographicSize = agroRange;
 		hitRangeProjector.orthographicSize = hitRange;
 		hpBarController.InitHP (maxHP);
-
 	}
 
 	void Update(){
@@ -44,8 +67,6 @@ public class UnitController : MonoBehaviour {
 				animator.SetBool ("enemyInHitRange", false);
 				animator.SetBool ("enemyInAgroRange", false);
 			} else {
-				//Debug.DrawLine (new Vector3 (transform.position.x, 1, transform.position.z),
-				//	new Vector3 (enemy.transform.position.x, 1, enemy.transform.position.z), Color.red);
 				animator.SetBool ("enemyInAgroRange", true);
 				float distance = Vector3.Distance (transform.position, enemy.transform.position);
 				animator.SetBool ("enemyInHitRange", distance <= hitRange);
@@ -55,6 +76,8 @@ public class UnitController : MonoBehaviour {
 	}
 
 	public void SetMovementTarget(Transform movementTarget){
+		if (navMeshAgent == null)
+			return;
 		navMeshAgent.speed = movingSpeed;
 		navMeshAgent.destination = movementTarget.position;
 	}
@@ -77,14 +100,19 @@ public class UnitController : MonoBehaviour {
 		if (isAlive == false)
 			return;
 		hpBarController.currentHP -= damageTaken;
-		if (hpBarController.currentHP == 0)
-			Death ();
+		if (hpBarController.currentHP == 0){
+			if (OnDeath != null)
+				OnDeath (this);
+		}	
 	}
 
-	public void Death(){
+	void Death(UnitController t){
 		isAlive = false;
-		bodyController.Death ();
 		navMeshAgent.enabled = false;
-		hpBarController.Death ();
+		Invoke ("DestroyUnit", 2);
+	}
+
+	void DestroyUnit(){
+		Destroy (gameObject);
 	}
 }

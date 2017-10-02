@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -27,6 +28,9 @@ public class HPBarController : MonoBehaviour {
 	}
 	
 	public void InitHP(int maxHP){
+		for(int i=1; i<transform.childCount;i++){
+			Destroy (transform.GetChild(i).gameObject);
+		}
 		this.maxHP = maxHP;
 		for(int i=0; i<maxHP-1; i++){
 			GameObject newHP = Instantiate (hpGO, transform);
@@ -35,7 +39,7 @@ public class HPBarController : MonoBehaviour {
 		currentHP = maxHP;
 	}
 
-	public void Death(){
+	public void Death(UnitController uC){
 		Destroy (transform.parent.gameObject);
 	}
 }

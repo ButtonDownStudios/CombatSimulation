@@ -7,6 +7,7 @@ public class CombatController : MonoSingleton<CombatController> {
 	public List<UnitController> redTeamList;
 	public List<UnitController> blueTeamList;
 	public Dictionary<string, List<UnitController>> teams;
+	public Dictionary<string, SpawnerController> spawners;
 
 	void Awake () {
 		CheckIsSingleInScene ();
@@ -15,10 +16,12 @@ public class CombatController : MonoSingleton<CombatController> {
 			List<UnitController> l = new List<UnitController> ();
 			teams.Add( teamName,l);
 		}
+		spawners = new Dictionary<string, SpawnerController> ();
 	}
 	
 	public void AddUnitToTeam(UnitController unit){
 		teams [unit.team.ToString()].Add (unit);
+		unit.OnDeath += OnUnitDeath;
 	}
 
 	public UnitController FindClosestEnemyInRange(UnitController unit, float range){
@@ -40,5 +43,22 @@ public class CombatController : MonoSingleton<CombatController> {
 				}
 		}
 		return closestRange < range ? target : null;
+	}
+
+	void OnUnitDeath(UnitController unitController){
+		string unitTeam = unitController.team.ToString();
+		teams [unitTeam].Remove (unitController);
+		if (spawners.ContainsKey (unitTeam))
+			spawners [unitTeam].AddUnitToSpawn ();
+	}
+
+	void OnUnitSpawed(UnitController unitController){
+		string unitTeam = unitController.team.ToString();
+		teams [unitTeam].Add (unitController);
+	}
+
+	public void AddSpawner(string team, SpawnerController spawnerController){
+		spawners.Add (team, spawnerController);
+		spawnerController.OnUnitSpawned += OnUnitSpawed;
 	}
 }
